@@ -33,9 +33,9 @@ This guide explains how to deploy the Property Agent Landing Page to Cloudflare 
    - Click "Save and Deploy"
    - Cloudflare will build and deploy your site automatically
 
-### Method 2: Wrangler CLI
+### Method 2: Wrangler CLI (Alternative)
 
-If you prefer using the command line:
+If you prefer using the command line for manual deployments:
 
 ```bash
 # Install Wrangler CLI
@@ -43,6 +43,9 @@ npm install -g wrangler
 
 # Login to Cloudflare
 wrangler auth login
+
+# Build the project locally
+npm run build
 
 # Deploy to Cloudflare Pages
 wrangler pages deploy dist --project-name=property-agent-landing-page
@@ -67,20 +70,7 @@ The project is configured with the following settings:
 - **Output directory**: `dist`
 - **Base path**: `./` (relative paths for static hosting)
 - **Build optimization**: Enabled for production
-
-### wrangler.toml
-```toml
-name = "property-agent-landing-page"
-compatibility_date = "2024-01-01"
-pages_build_output_dir = "dist"
-
-[build]
-command = "npm run build"
-cwd = "."
-
-[build.environment_variables]
-NODE_VERSION = "18"
-```
+- **SPA routing**: Client-side routing support configured
 
 ## Custom Domain (Optional)
 
