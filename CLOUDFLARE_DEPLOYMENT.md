@@ -83,10 +83,20 @@ To use a custom domain:
 
 ## Troubleshooting
 
+### Deployment Using Old Commit
+If you see errors about `wrangler.toml` configuration:
+1. Check that `wrangler.toml` does NOT exist in your repository (it was removed as it's incompatible with Pages)
+2. Verify you're on the latest commit: `git log -1` should show commit `040095c` or later
+3. In Cloudflare Pages dashboard:
+   - Go to your project → "Deployments" tab
+   - Click "Retry deployment" or "View build" → "Retry deployment"
+   - This will force Cloudflare to deploy from the latest commit
+
 ### Build Failures
 - Ensure Node.js version is 18 or higher
 - Check that all dependencies are installed: `npm install`
 - Verify build command works locally: `npm run build`
+- If you see wrangler.toml errors, ensure the file is deleted (it's not compatible with Pages)
 
 ### Routing Issues
 - The app uses client-side routing
